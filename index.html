@@ -5,6 +5,88 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hey Nova — Dip Edition</title>
   <style>
+
+    /* --------- EXTRA RESPONSIVE FIXES (mobile/tablet) --------- */
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+    align-items: flex-start;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    padding: 14px;
+    min-height: auto;
+  }
+
+  .left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .brand {
+    flex-direction: column;
+  }
+
+  .orb {
+    width: 150px;
+    height: 150px;
+    margin-top: 12px;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    flex: 1 1 45%;
+    justify-content: center;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  #chatBox {
+    height: 320px;
+  }
+
+  .inputRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .textInput {
+    width: 100%;
+  }
+
+  .foot {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 56px;
+    height: 56px;
+    font-size: 18px;
+  }
+
+  .brand h1 {
+    font-size: 16px;
+  }
+
+  .chatTitle {
+    font-size: 15px;
+  }
+
+  .bubble {
+    max-width: 90%;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+}
+
     /* --------- Basic reset & font --------- */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
     *{box-sizing:border-box;margin:0;padding:0}
