@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Nova AI Assistant (Bangla)</title>
+</head>
+<body style="text-align:center; font-family:sans-serif; background:#0d1117; color:white;">
+  <h2>🎙️ Nova – তোমার Voice Assistant</h2>
+  <button id="startBtn" style="padding:10px 20px; font-size:18px;">🎤 কথা বলো</button>
+  <p id="status"></p>
+
+  <script>
+    const btn = document.getElementById("startBtn");
+    const statusText = document.getElementById("status");
+
+    // কথা শোনার জন্য SpeechRecognition তৈরি
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = "bn-BD";
+    recognition.continuous = false;
+
+    // কথা বলার function
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "bn-BD";
+      speechSynthesis.speak(utter);
+    }
+
+    // Command শোনা শুরু
+    btn.onclick = () => {
+      speak("বলুন, আমি শুনছি...");
+      recognition.start();
+    };
+
+    // যখন voice শোনা শেষ হবে
+    recognition.onresult = (event) => {
+      const command = event.results[0][0].transcript.toLowerCase();
+      statusText.innerText = "তুমি বলেছো: " + command;
+      console.log("Command:", command);
+
+      // Command অনুযায়ী কাজ
+      if (command.includes("অ্যাটেনডেন্স") || command.includes("attendance")) {
+        speak("ঠিক আছে, অ্যাটেনডেন্স শীট রেডি করছি!");
+        statusText.innerText = "📋 Attendance ready করা হচ্ছে...";
+      }
+      else if (command.includes("গান") || command.includes("song")) {
+        speak("তোমার জন্য একটা গান চালাচ্ছি...");
+        window.open("https://www.youtube.com/results?search_query=bengali+song");
+      }
+      else if (command.includes("সময়") || command.includes("time")) {
+        const now = new Date();
+        const time = now.toLocaleTimeString('bn-BD');
+        speak("এখন সময় " + time);
+      }
+      else if (command.includes("নোভা")) {
+        speak("জি বলুন, আমি শুনছি!");
+      }
+      else {
+        speak("দুঃখিত, আমি বুঝতে পারিনি। আবার বলবেন?");
+      }
+    };
+
+    recognition.onerror = () => {
+      speak("ভয়েস রিকগনিশন বন্ধ হয়েছে, আবার চেষ্টা করুন।");
+    };
+  </script>
+</body>
+</html>
