@@ -1,274 +1,427 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hey Nova — Dip Edition</title>
   <style>
-
-    /* --------- EXTRA RESPONSIVE FIXES (mobile/tablet) --------- */
-@media (max-width: 768px) {
-  body {
-    padding: 16px;
-    align-items: flex-start;
-  }
-
-  .card {
-    grid-template-columns: 1fr;
-    padding: 14px;
-    min-height: auto;
-  }
-
-  .left {
-    align-items: center;
-    text-align: center;
-  }
-
-  .brand {
-    flex-direction: column;
-  }
-
-  .orb {
-    width: 150px;
-    height: 150px;
-    margin-top: 12px;
-  }
-
-  .controls {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .btn {
-    flex: 1 1 45%;
-    justify-content: center;
-    font-size: 13px;
-    padding: 8px 10px;
-  }
-
-  #chatBox {
-    height: 320px;
-  }
-
-  .inputRow {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .textInput {
-    width: 100%;
-  }
-
-  .foot {
-    font-size: 11px;
-    line-height: 1.4;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    width: 56px;
-    height: 56px;
-    font-size: 18px;
-  }
-
-  .brand h1 {
-    font-size: 16px;
-  }
-
-  .chatTitle {
-    font-size: 15px;
-  }
-
-  .bubble {
-    max-width: 90%;
-    font-size: 13px;
-    padding: 8px 10px;
-  }
-}
-
-    /* --------- Basic reset & font --------- */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,#071021 0%, #071428 40%, #041126 100%);
-      color:#e6f7ff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:28px;
+      background: linear-gradient(180deg, #071021 0%, #071428 40%, #041126 100%);
+      color: #e6f7ff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
     }
 
-    /* ---------- animated gradient blobs ---------- */
-    .bg-blob{
+    .bg-blob {
       position: fixed;
-      width:420px;
-      height:420px;
+      width: 420px;
+      height: 420px;
       filter: blur(80px);
-      opacity:.12;
-      border-radius:50%;
-      z-index:0;
-      transform:translate3d(0,0,0);
-      mix-blend-mode:screen;
+      opacity: .12;
+      border-radius: 50%;
+      z-index: 0;
+      mix-blend-mode: screen;
     }
-    .blob-1{ background: radial-gradient(circle at 30% 30%, #00ffc2, #008cff 60%); top: -120px; left:-120px; animation: float1 12s ease-in-out infinite; }
-    .blob-2{ background: radial-gradient(circle at 70% 60%, #ffb86b, #ff6bcb 55%); bottom:-160px; right:-140px; animation: float2 14s ease-in-out infinite; }
-    @keyframes float1 { 0%{transform:translateY(0) translateX(0);} 50%{transform:translateY(30px) translateX(20px);} 100%{transform:translateY(0) translateX(0);} }
-    @keyframes float2 { 0%{transform:translateY(0) translateX(0);} 50%{transform:translateY(-30px) translateX(-20px);} 100%{transform:translateY(0) translateX(0);} }
 
-    /* ---------- container (glass card) ---------- */
+    .blob-1 {
+      background: radial-gradient(circle at 30% 30%, #00ffc2, #008cff 60%);
+      top: -120px;
+      left: -120px;
+      animation: float1 12s ease-in-out infinite;
+    }
+
+    .blob-2 {
+      background: radial-gradient(circle at 70% 60%, #ffb86b, #ff6bcb 55%);
+      bottom: -160px;
+      right: -140px;
+      animation: float2 14s ease-in-out infinite;
+    }
+
+    @keyframes float1 {
+      0% {
+        transform: translate(0, 0)
+      }
+
+      50% {
+        transform: translate(20px, 30px)
+      }
+
+      100% {
+        transform: translate(0, 0)
+      }
+    }
+
+    @keyframes float2 {
+      0% {
+        transform: translate(0, 0)
+      }
+
+      50% {
+        transform: translate(-20px, -30px)
+      }
+
+      100% {
+        transform: translate(0, 0)
+      }
+    }
+
     .card {
       position: relative;
-      z-index:2;
-      width:100%;
-      max-width:980px;
-      min-height:560px;
-      border-radius:18px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      z-index: 2;
+      width: 100%;
+      max-width: 980px;
+      min-height: 560px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
       backdrop-filter: blur(10px) saturate(120%);
-      border: 1px solid rgba(255,255,255,0.04);
-      padding:22px;
-      display:grid;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 22px;
+      display: grid;
       grid-template-columns: 360px 1fr;
-      gap:18px;
-      overflow:hidden;
+      gap: 18px;
+      overflow: hidden;
     }
 
-    /* ---------- left column: controls/profile ---------- */
     .left {
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      align-items:center;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
     }
+
     .brand {
-      width:100%;
-      display:flex;
-      align-items:center;
-      gap:12px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
+
     .logo {
-      width:68px; height:68px; border-radius:14px;
-      background:linear-gradient(135deg,#00ffb3,#2bd1ff);
-      display:flex; align-items:center; justify-content:center;
-      box-shadow: 0 6px 20px rgba(43,209,255,0.08), 0 1px 0 rgba(255,255,255,0.06) inset;
-      font-weight:700; color:#001422;
-      font-size:22px;
+      width: 68px;
+      height: 68px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #00ffb3, #2bd1ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(43, 209, 255, 0.08), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+      font-weight: 700;
+      color: #001422;
+      font-size: 22px;
     }
-    .brand h1{ font-size:18px; color:#e6fff6; letter-spacing:0.2px; }
-    .brand p{ font-size:12px; color:#bfeef3; opacity:0.9; margin-top:4px }
+
+    .brand h1 {
+      font-size: 18px;
+      color: #e6fff6;
+      letter-spacing: 0.2px;
+    }
+
+    .brand p {
+      font-size: 12px;
+      color: #bfeef3;
+      opacity: 0.9;
+      margin-top: 4px
+    }
 
     .orb {
-      margin-top:8px;
-      width:220px; height:220px;
-      border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      background: radial-gradient(circle at 30% 30%, rgba(0,255,179,0.06), rgba(0,139,255,0.04));
-      box-shadow: 0 8px 30px rgba(0,255,179,0.03), inset 0 -6px 30px rgba(0,0,0,0.2);
-      position:relative;
+      margin-top: 8px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 30%, rgba(0, 255, 179, 0.06), rgba(0, 139, 255, 0.04));
+      box-shadow: 0 8px 30px rgba(0, 255, 179, 0.03), inset 0 -6px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
     }
+
     .orb .ring {
-      width:120px;height:120px;border-radius:50%;
-      border: 3px solid rgba(0,255,179,0.12);
-      display:flex;align-items:center;justify-content:center;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 255, 179, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       animation: pulse 2s infinite;
     }
+
     .orb .mic {
-      width:56px;height:56px;border-radius:50%;
-      background: #00ffb3; display:flex;align-items:center;justify-content:center;
-      color:#002126;font-weight:700;font-size:20px;
-      box-shadow:0 6px 18px rgba(0,255,179,0.12);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #00ffb3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #002126;
+      font-weight: 700;
+      font-size: 20px;
+      box-shadow: 0 6px 18px rgba(0, 255, 179, 0.12);
     }
+
     @keyframes pulse {
-      0%{ transform:scale(1); opacity:0.9 }
-      50%{ transform:scale(1.12); opacity:0.6 }
-      100%{ transform:scale(1); opacity:0.9 }
+      0% {
+        transform: scale(1);
+        opacity: 0.9
+      }
+
+      50% {
+        transform: scale(1.12);
+        opacity: 0.6
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 0.9
+      }
     }
 
-    .controls { width:100%; display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; justify-content:center; }
+    .controls {
+      width: 100%;
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .btn {
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.05);
-      padding:10px 14px; border-radius:12px; color:#e7fff9; cursor:pointer;
-      display:inline-flex; gap:8px; align-items:center; font-weight:600; font-size:14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #e7fff9;
+      cursor: pointer;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
     }
-    .btn.important{ background:linear-gradient(90deg,#00ffb3,#2bd1ff); color:#001421; font-weight:700; box-shadow:0 6px 18px rgba(43,209,255,0.08); }
 
-    .small { font-size:13px; color:#cfeff6; opacity:0.9; margin-top:8px; text-align:center; }
+    .btn.important {
+      background: linear-gradient(90deg, #00ffb3, #2bd1ff);
+      color: #001421;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(43, 209, 255, 0.08);
+    }
 
-    /* ---------- right column: chat area ---------- */
+    .small {
+      font-size: 13px;
+      color: #cfeff6;
+      opacity: 0.9;
+      margin-top: 8px;
+      text-align: center;
+    }
+
     .right {
-      display:flex; flex-direction:column; gap:12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
+
     .chatHeader {
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
+
     .chatTitle {
-      font-size:16px; font-weight:700; color:#e6fff6;
+      font-size: 16px;
+      font-weight: 700;
+      color: #e6fff6;
     }
-    .sub { font-size:12px; color:#bfeef3; opacity:0.9; }
+
+    .sub {
+      font-size: 12px;
+      color: #bfeef3;
+      opacity: 0.9;
+    }
 
     #chatBox {
-      height:420px; overflow:auto; padding:14px; border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
-      border:1px solid rgba(255,255,255,0.02);
+      height: 420px;
+      overflow: auto;
+      padding: 14px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005));
+      border: 1px solid rgba(255, 255, 255, 0.02);
     }
+
     .bubble {
-      max-width:78%;
-      padding:10px 12px;
-      margin:8px 0;
-      border-radius:14px;
-      line-height:1.3;
-      word-break:break-word;
+      max-width: 78%;
+      padding: 10px 12px;
+      margin: 8px 0;
+      border-radius: 14px;
+      line-height: 1.3;
+      word-break: break-word;
     }
+
     .bubble.user {
-      background:linear-gradient(90deg,#053a54,#0b6b8f);
-      color:#d7f7ff;
-      margin-left:auto;
-      border-bottom-right-radius:4px;
+      background: linear-gradient(90deg, #053a54, #0b6b8f);
+      color: #d7f7ff;
+      margin-left: auto;
+      border-bottom-right-radius: 4px;
     }
+
     .bubble.nova {
-      background: linear-gradient(90deg,#061a2a,#0e2b3f);
-      color:#ffe9b8;
-      border-bottom-left-radius:4px;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+      background: linear-gradient(90deg, #061a2a, #0e2b3f);
+      color: #ffe9b8;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
     }
 
     .inputRow {
-      display:flex; gap:10px; align-items:center; margin-top:6px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 6px;
     }
+
     .textInput {
-      flex:1; background:transparent; border:1px solid rgba(255,255,255,0.04); padding:10px 12px; border-radius:12px; color:#e6fff6;
+      flex: 1;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: #e6fff6;
     }
 
-    /* ---------- footer small note ---------- */
     .foot {
-      margin-top:6px; font-size:12px; color:#bfeef3; opacity:0.85; text-align:center;
+      margin-top: 6px;
+      font-size: 12px;
+      color: #bfeef3;
+      opacity: 0.85;
+      text-align: center;
     }
 
-    /* responsive */
-    @media (max-width:900px) {
-      .card { grid-template-columns: 1fr; padding:18px; min-height:640px;}
-      .orb { width:160px;height:160px}
+    /* === Improved Responsive Tweaks === */
+    @media (max-width:1024px) {
+      .card {
+        grid-template-columns: 1fr;
+        max-width: 95%;
+        padding: 18px;
+      }
+
+      #chatBox {
+        height: 380px;
+      }
     }
 
+    @media (max-width:768px) {
+      body {
+        padding: 12px;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      .card {
+        grid-template-columns: 1fr;
+        padding: 14px;
+      }
+
+      .left,
+      .right {
+        width: 100%;
+        align-items: center;
+      }
+
+      .brand {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .orb {
+        width: 150px;
+        height: 150px;
+        margin: 12px 0;
+      }
+
+      .controls {
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+      }
+
+      .btn {
+        flex: 1 1 45%;
+        font-size: 13px;
+        padding: 8px 10px;
+      }
+
+      #chatBox {
+        height: 320px;
+      }
+
+      .inputRow {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .textInput,
+      #sendBtn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width:480px) {
+      .logo {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+      }
+
+      .brand h1 {
+        font-size: 16px;
+      }
+
+      .bubble {
+        max-width: 90%;
+        font-size: 13px;
+        padding: 8px 10px;
+      }
+
+      .btn {
+        font-size: 12px;
+        padding: 7px 9px;
+      }
+
+      #chatBox {
+        height: 280px;
+      }
+    }
   </style>
 </head>
-<body>
 
-  <!-- subtle animated background blobs -->
+<body>
   <div class="bg-blob blob-1"></div>
   <div class="bg-blob blob-2"></div>
 
   <main class="card" role="main" aria-label="Nova AI Assistant">
-    <!-- LEFT -->
-    <section class="left" aria-hidden="false">
+    <section class="left">
       <div class="brand">
         <div class="logo">NV</div>
         <div>
@@ -276,48 +429,42 @@
           <p>Dip Edition • Personal AI companion</p>
         </div>
       </div>
-
       <div class="orb" title="Listening orb (touch mic to start)">
         <div class="ring" id="ring">
-          <div class="mic" id="micBtn" aria-label="Start voice">🎤</div>
+          <div class="mic" id="micBtn">🎤</div>
         </div>
       </div>
-
       <div class="controls">
-        <button class="btn" id="btnUpload" title="Open upload form">📂 Upload</button>
-        <button class="btn" id="btnMusic" title="Play music">🎵 Music</button>
-        <button class="btn" id="btnTime" title="Current time">⏰ Time</button>
-        <button class="btn important" id="btnGreet" title="Greet">👋 Greet</button>
+        <button class="btn" id="btnUpload">📂 Upload</button>
+        <button class="btn" id="btnMusic">🎵 Music</button>
+        <button class="btn" id="btnTime">⏰ Time</button>
+        <button class="btn important" id="btnGreet">👋 Greet</button>
       </div>
-
       <div class="small">Say <strong>"Hey Nova"</strong> or tap mic • Multilang (BN/EN/HI)</div>
     </section>
 
-    <!-- RIGHT -->
     <section class="right">
       <div class="chatHeader">
         <div>
           <div class="chatTitle">Conversation</div>
           <div class="sub">Nova listens, learns & adapts to your style</div>
         </div>
-        <div style="text-align:right">
-          <div style="font-size:12px;color:#bfeef3">Status: <span id="statusText">Idle</span></div>
+        <div style="text-align:right;font-size:12px;color:#bfeef3">
+          Status: <span id="statusText">Idle</span>
         </div>
       </div>
 
-      <div id="chatBox" aria-live="polite" role="log"></div>
+      <div id="chatBox"></div>
 
       <div class="inputRow">
-        <input id="manualInput" class="textInput" placeholder="Type a message or press mic..." aria-label="Manual input" />
+        <input id="manualInput" class="textInput" placeholder="Type a message or press mic..." />
         <button class="btn" id="sendBtn">Send</button>
       </div>
-
-      <div class="foot">Tip: say <em>"Nova, upload file"</em> to open upload panel • Or <em>"Nova, set reminder 8 am gym"</em></div>
+      <div class="foot">Tip: say <em>"Nova, upload file"</em> or <em>"Nova, set reminder 8 am gym"</em></div>
     </section>
   </main>
 
   <script>
-    // ---------- basic refs ----------
     const chatBox = document.getElementById('chatBox');
     const statusText = document.getElementById('statusText');
     const micBtn = document.getElementById('micBtn');
@@ -329,56 +476,45 @@
     const manualInput = document.getElementById('manualInput');
     const sendBtn = document.getElementById('sendBtn');
 
-    // ---------- speech synthesis setup (try to pick a natural voice) ----------
     const synth = window.speechSynthesis;
     let selectedVoice = null;
 
     function pickVoice() {
-      const voices = synth.getVoices ? synth.getVoices() : [];
-      // prefer female & bangla/hi/en voices if available
-      selectedVoice = voices.find(v => /female|woman|Google\ W/gi.test(v.name)) ||
-                      voices.find(v => v.lang && v.lang.startsWith('bn')) ||
-                      voices.find(v => v.lang && v.lang.startsWith('hi')) ||
-                      voices.find(v => v.lang && v.lang.startsWith('en')) ||
-                      voices[0] || null;
+      const voices = synth.getVoices();
+      selectedVoice =
+        voices.find(v => v.name.includes("Google বাংলা নারী")) ||
+        voices.find(v => v.name.includes("Google UK English Female")) ||
+        voices.find(v => /female|woman/i.test(v.name)) ||
+        voices.find(v => v.lang === "bn-BD") ||
+        voices.find(v => v.lang === "en-IN") ||
+        voices[0] || null;
     }
-    // voices may load async
-    if (synth.onvoiceschanged !== undefined) {
-      synth.onvoiceschanged = pickVoice;
-    }
+    if (synth.onvoiceschanged !== undefined) { synth.onvoiceschanged = pickVoice; }
     pickVoice();
 
     function speak(text, opts = {}) {
-      // opts: {pitch, rate}
-      if(!text) return;
+      if (!text) return;
       const u = new SpeechSynthesisUtterance(text);
       u.lang = 'bn-BD';
       u.text = text;
-      u.pitch = typeof opts.pitch !== 'undefined' ? opts.pitch : 1.03;
-      u.rate = typeof opts.rate !== 'undefined' ? opts.rate : 0.96;
+      u.pitch = opts.pitch ?? 1.05;
+      u.rate = opts.rate ?? 1.0;
       if (selectedVoice) u.voice = selectedVoice;
-      synth.cancel();
       synth.speak(u);
       appendNova(text);
     }
 
-    // ---------- chat helpers ----------
     function appendUser(text) {
       const el = document.createElement('div');
-      el.className = 'bubble user';
-      el.textContent = text;
-      chatBox.appendChild(el);
-      chatBox.scrollTop = chatBox.scrollHeight;
+      el.className = 'bubble user'; el.textContent = text;
+      chatBox.appendChild(el); chatBox.scrollTop = chatBox.scrollHeight;
     }
     function appendNova(text) {
       const el = document.createElement('div');
-      el.className = 'bubble nova';
-      el.textContent = text;
-      chatBox.appendChild(el);
-      chatBox.scrollTop = chatBox.scrollHeight;
+      el.className = 'bubble nova'; el.textContent = text;
+      chatBox.appendChild(el); chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    // ---------- voice recognition ----------
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recog = null;
     try {
@@ -387,7 +523,6 @@
       recog.interimResults = false;
       recog.maxAlternatives = 1;
     } catch (err) {
-      console.warn('SpeechRecognition not supported', err);
       statusText.textContent = 'Voice not supported';
     }
 
@@ -399,22 +534,20 @@
         listening = true;
         statusText.textContent = 'Listening...';
         ring.style.animationPlayState = 'running';
-        ring.style.opacity = '1';
-      } catch(e){}
+      } catch (e) { }
     }
     function stopListening() {
       if (!recog) return;
-      try { recog.stop(); } catch(e){}
+      try { recog.stop(); } catch (e) { }
       listening = false;
       statusText.textContent = 'Processing...';
       ring.style.animationPlayState = 'paused';
-      ring.style.opacity = '0.9';
     }
 
     if (recog) {
-      recog.onstart = () => { statusText.textContent = 'Listening...'; ring.style.transform = 'scale(1.02)'; }
-      recog.onend = () => { if(listening) { /* sometimes onend triggers; mark idle */ } statusText.textContent = 'Idle'; ring.style.transform='scale(1)'; }
-      recog.onerror = (ev) => { console.error('REC error',ev); statusText.textContent = 'Error'; speak('ভয়েস রিকগনিশন ত্রুটি, আবার বলো'); }
+      recog.onstart = () => { statusText.textContent = 'Listening...'; };
+      recog.onend = () => { statusText.textContent = 'Idle'; };
+      recog.onerror = (ev) => { statusText.textContent = 'Error'; speak('ভয়েস রিকগনিশন ত্রুটি, আবার বলো'); };
       recog.onresult = (ev) => {
         stopListening();
         const transcript = ev.results[0][0].transcript.trim();
@@ -423,126 +556,32 @@
       };
     }
 
-    // ---------- command processing & simple NLP ----------
-    function processCommand(raw) {
-      // Basic normalization for common bn words
-      const cmd = raw.toLowerCase();
-      // wake phrase: "hey nova" or "nova"
-      if (/^(hey\s*nova|nova|নোভা|হেই নোভা)/i.test(cmd)) {
-        speak('জি বলুন Dip bhai! আমি আছি।');
-        return;
-      }
-      // upload
-      if (cmd.includes('upload') || cmd.includes('ফাইল') || cmd.includes('আপলোড')) {
-        speak('ঠিক আছে, আপলোড প্যানেল খুলে দিচ্ছি।');
-        window.open('https://forms.gle/eQiyxN8bSS7hdBcH6', '_blank');
-        return;
-      }
-      // music
-      if (cmd.includes('গান') || cmd.includes('music') || cmd.includes('play song')) {
-        speak('তোমার জন্য একটু গান চালাচ্ছি।');
-        window.open('https://www.youtube.com/results?search_query=bengali+song', '_blank');
-        return;
-      }
-      // time
-      if (cmd.includes('সময়') || cmd.includes('time') || cmd.includes('কতটা')) {
-        const now = new Date();
-        const t = now.toLocaleTimeString('bn-BD');
-        speak('এখন সময় ' + t);
-        return;
-      }
-      // reminder (simple parse)
+    function processCommand(cmd) {
+      cmd = cmd.toLowerCase();
+      if (/^(hey\s*nova|nova|নোভা|হেই নোভা)/i.test(cmd)) { speak('জি বলুন Dip bhai! আমি আছি।'); return; }
+      if (cmd.includes('upload') || cmd.includes('ফাইল') || cmd.includes('আপলোড')) { speak('ঠিক আছে, আপলোড প্যানেল খুলে দিচ্ছি।'); window.open('https://forms.gle/eQiyxN8bSS7hdBcH6', '_blank'); return; }
+      if (cmd.includes('গান') || cmd.includes('music') || cmd.includes('play song')) { speak('তোমার জন্য একটু গান চালাচ্ছি।'); window.open('https://www.youtube.com/results?search_query=bengali+song', '_blank'); return; }
+      if (cmd.includes('সময়') || cmd.includes('time') || cmd.includes('কতটা')) { const t = new Date().toLocaleTimeString('bn-BD'); speak('এখন সময় ' + t); return; }
       if (cmd.includes('remind') || cmd.includes('মনে') || cmd.includes('রিমাইন্ড')) {
-        // very simple extraction: look for a number (hour)
         const m = cmd.match(/(\d{1,2})/);
-        if (m) {
-          const hour = parseInt(m[1]);
-          speak('ঠিক আছে, আমি ' + hour + ' টায় মনে করিয়ে দেব। (ডেমো মোডে শুধু মেমো সংরক্ষিত)');
-          // save locally so Nova "remembers" - simple localStorage approach
-          const reminders = JSON.parse(localStorage.getItem('nova_reminders') || '[]');
-          reminders.push({text: cmd, hour: hour, created: Date.now()});
-          localStorage.setItem('nova_reminders', JSON.stringify(reminders));
-          return;
-        } else {
-          speak('কোন সময় স্মরণ করাতে চাও? উদাহরণ: "আমাকে ৮ টায় রিমাইন্ড করো" বলো।');
-          return;
-        }
+        if (m) { const hour = parseInt(m[1]); speak('ঠিক আছে, আমি ' + hour + ' টায় মনে করিয়ে দেব।'); const reminders = JSON.parse(localStorage.getItem('nova_reminders') || '[]'); reminders.push({ text: cmd, hour, created: Date.now() }); localStorage.setItem('nova_reminders', JSON.stringify(reminders)); return; }
+        else { speak('কোন সময় স্মরণ করাতে চাও? উদাহরণ: "আমাকে ৮ টায় রিমাইন্ড করো" বলো।'); return; }
       }
-      // mood / emotional support
-      if (cmd.includes('মন খারাপ') || cmd.includes('দুঃখ') || cmd.includes('কষ্ট')) {
-        speak('চিন্তা করো না Dip bhai. একটু deep breathe নাও — সব ঠিক হয়ে যাবে। আমি আছি তোমার পাশে।');
-        return;
-      }
-      // fallback: if not recognized, try to call online AI (if available) - demo offline response
-      // For full AI use, integrate Gemini/OpenAI API on backend and call via fetch.
+      if (cmd.includes('মন খারাপ') || cmd.includes('দুঃখ') || cmd.includes('কষ্ট')) { speak('চিন্তা করো না Dip bhai. একটু deep breathe নাও — সব ঠিক হয়ে যাবে। আমি আছি তোমার পাশে।'); return; }
       speak('দুঃখিত, আমি ঠিক বুঝিনি। তুমি ভিন্নভাবে বলে দাও বা "Hey Nova" বলো।');
     }
 
-    // ---------- UI buttons ----------
-    micBtn.addEventListener('click', () => {
-      // toggle listening
-      if (!listening) {
-        startListening();
-      } else {
-        stopListening();
-      }
-      // start recognition explicitly
-      startListening();
-    });
+    micBtn.addEventListener('click', () => { if (!listening) startListening(); else stopListening(); });
+    btnUpload.addEventListener('click', () => { speak('Upload panel খুলছি।'); window.open('https://forms.gle/eQiyxN8bSS7hdBcH6', '_blank'); });
+    btnMusic.addEventListener('click', () => { speak('একটু মিউজিক চালাচ্ছি।'); window.open('https://www.youtube.com/results?search_query=bengali+song', '_blank'); });
+    btnTime.addEventListener('click', () => { speak('এখন সময় ' + new Date().toLocaleTimeString('bn-BD')); });
+    btnGreet.addEventListener('click', () => { speak('🌸 Ram Ram Dip bhai! তোমার Nova হাজির. আজ কেমন আছো?'); });
 
-    btnUpload.addEventListener('click', ()=> {
-      speak('Upload panel খুলছি।');
-      window.open('https://forms.gle/eQiyxN8bSS7hdBcH6','_blank');
-    });
-    btnMusic.addEventListener('click', ()=> {
-      speak('একটু মিউজিক চালাচ্ছি।');
-      window.open('https://www.youtube.com/results?search_query=bengali+song','_blank');
-    });
-    btnTime.addEventListener('click', ()=> {
-      const now = new Date();
-      speak('এখন সময় ' + now.toLocaleTimeString('bn-BD'));
-    });
-    btnGreet.addEventListener('click', ()=> {
-      speak('🌸 Ram Ram Dip bhai! তোমার Nova হাজির. আজ কেমন আছো?');
-    });
+    sendBtn.addEventListener('click', () => { const txt = manualInput.value.trim(); if (!txt) return; appendUser(txt); manualInput.value = ''; processCommand(txt.toLowerCase()); });
+    manualInput.addEventListener('keydown', e => { if (e.key === 'Enter') { sendBtn.click(); } });
 
-    // manual send
-    sendBtn.addEventListener('click', ()=> {
-      const txt = manualInput.value.trim();
-      if(!txt) return;
-      appendUser(txt);
-      manualInput.value='';
-      processCommand(txt.toLowerCase());
-    });
-    manualInput.addEventListener('keydown', (e)=> { if(e.key==='Enter'){ sendBtn.click(); } });
-
-    // ---------- simple reminder checker (demo) ----------
-    function checkReminders() {
-      const reminders = JSON.parse(localStorage.getItem('nova_reminders') || '[]');
-      if (!reminders.length) return;
-      const now = new Date();
-      const hour = now.getHours();
-      // fire any reminders scheduled for current hour (simple demo)
-      const toFire = reminders.filter(r => r.hour === hour);
-      toFire.forEach(r => speak('Reminder: ' + r.text));
-      // keep reminders (or remove if one-time)
-    }
-    // check every minute
-    setInterval(checkReminders, 60 * 1000);
-
-    // ---------- initial greeting & small UI hint ----------
-    setTimeout(()=> {
-      appendNova('🌸 Ram Ram Dip! তোমার Nova হাজির. বলো, কী করতে হবে?');
-    }, 900);
-
-    // ensure autoscroll
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    // accessibility: if SpeechRecognition not available show note
-    if (!SpeechRecognition) {
-      appendNova('দুইথেকে: আপনার ব্রাউজারে Voice recognition সাপোর্ট নেই — Chrome বা Edge ব্যবহার করুন।');
-      statusText.textContent = 'Voice unsupported';
-    }
+    setTimeout(() => { appendNova('🌸 Ram Ram Dip! তোমার Nova হাজির. বলো, কী করতে হবে?'); }, 900);
   </script>
 </body>
+
 </html>
