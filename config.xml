@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.nova.ai"
+        version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+    <!-- 🧠 App Name, Description, Author -->
+    <name>Hey Nova — Dip Edition</name>
+    <description>Personal AI Assistant for Dip — Voice, Emotion & Daily Support</description>
+    <author email="dipbag009@gmail.com" href="https://github.com/dipnova">Dip Bag</author>
+
+    <!-- ⚙️ Default settings -->
+    <content src="u-design/index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-navigation href="*" />
+
+    <!-- 📱 Display Options -->
+    <preference name="Orientation" value="portrait" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="SplashScreen" value="none" />
+
+    <!-- 🎙️ Permissions -->
+    <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest">
+        <uses-permission android:name="android.permission.RECORD_AUDIO" />
+        <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    </edit-config>
+
+    <!-- 📦 Android Platform -->
+    <platform name="android">
+        <icon src="u-design/icon512.png" />
+    </platform>
+
+</widget>

@@ -5,7 +5,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hey Nova — Dip Edition</title>
+
+  <link rel="manifest" href="manifest.json">
+
   <style>
+
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
     * {
@@ -307,6 +311,10 @@
       padding: 10px 12px;
       border-radius: 12px;
       color: #e6fff6;
+      outline: none;
+    }
+    .textInput:active {
+      background: #fff3;
     }
 
     .foot {
@@ -581,6 +589,20 @@
     manualInput.addEventListener('keydown', e => { if (e.key === 'Enter') { sendBtn.click(); } });
 
     setTimeout(() => { appendNova('🌸 Ram Ram Dip! তোমার Nova হাজির. বলো, কী করতে হবে?'); }, 900);
+
+    function passiveListen() {
+  if(!recog) return;
+  recog.start();
+  recog.onresult = (e) => {
+    const t = e.results[0][0].transcript.toLowerCase();
+    if (t.includes("hey nova") || t.includes("হেই নোভা") || t.includes("nova")) {
+      speak("জি Dip bhai, আমি আছি।");
+      startListening(); // main recognition again
+    }
+  };
+  recog.onend = () => { if(listening === false) passiveListen(); };
+}
+
   </script>
 </body>
 
