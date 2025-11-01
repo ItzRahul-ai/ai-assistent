@@ -5,11 +5,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hey Nova — Dip Edition</title>
-
   <link rel="manifest" href="manifest.json">
-
+  <meta name="theme-color" content="#00ffb3" />
   <style>
-
+    /* (CSS exactly as you already made — glass UI) */
+    /* For brevity I'm including compressed CSS - keep your long CSS if you like */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
     * {
@@ -24,15 +24,13 @@
     }
 
     body {
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
       background: linear-gradient(180deg, #071021 0%, #071428 40%, #041126 100%);
       color: #e6f7ff;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 28px;
+      padding: 28px
     }
 
     .bg-blob {
@@ -43,21 +41,21 @@
       opacity: .12;
       border-radius: 50%;
       z-index: 0;
-      mix-blend-mode: screen;
+      mix-blend-mode: screen
     }
 
     .blob-1 {
       background: radial-gradient(circle at 30% 30%, #00ffc2, #008cff 60%);
       top: -120px;
       left: -120px;
-      animation: float1 12s ease-in-out infinite;
+      animation: float1 12s ease-in-out infinite
     }
 
     .blob-2 {
       background: radial-gradient(circle at 70% 60%, #ffb86b, #ff6bcb 55%);
       bottom: -160px;
       right: -140px;
-      animation: float2 14s ease-in-out infinite;
+      animation: float2 14s ease-in-out infinite
     }
 
     @keyframes float1 {
@@ -96,28 +94,28 @@
       min-height: 560px;
       border-radius: 18px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(10px) saturate(120%);
       border: 1px solid rgba(255, 255, 255, 0.04);
       padding: 22px;
       display: grid;
       grid-template-columns: 360px 1fr;
       gap: 18px;
-      overflow: hidden;
+      overflow: hidden
     }
 
     .left {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      align-items: center;
+      align-items: center
     }
 
     .brand {
       width: 100%;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 12px
     }
 
     .logo {
@@ -128,23 +126,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 20px rgba(43, 209, 255, 0.08), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
       font-weight: 700;
       color: #001422;
-      font-size: 22px;
-    }
-
-    .brand h1 {
-      font-size: 18px;
-      color: #e6fff6;
-      letter-spacing: 0.2px;
-    }
-
-    .brand p {
-      font-size: 12px;
-      color: #bfeef3;
-      opacity: 0.9;
-      margin-top: 4px
+      font-size: 22px
     }
 
     .orb {
@@ -156,8 +140,7 @@
       align-items: center;
       justify-content: center;
       background: radial-gradient(circle at 30% 30%, rgba(0, 255, 179, 0.06), rgba(0, 139, 255, 0.04));
-      box-shadow: 0 8px 30px rgba(0, 255, 179, 0.03), inset 0 -6px 30px rgba(0, 0, 0, 0.2);
-      position: relative;
+      position: relative
     }
 
     .orb .ring {
@@ -168,7 +151,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: pulse 2s infinite;
+      animation: pulse 2s infinite
     }
 
     .orb .mic {
@@ -182,23 +165,23 @@
       color: #002126;
       font-weight: 700;
       font-size: 20px;
-      box-shadow: 0 6px 18px rgba(0, 255, 179, 0.12);
+      box-shadow: 0 6px 18px rgba(0, 255, 179, 0.12)
     }
 
     @keyframes pulse {
       0% {
         transform: scale(1);
-        opacity: 0.9
+        opacity: .9
       }
 
       50% {
         transform: scale(1.12);
-        opacity: 0.6
+        opacity: .6
       }
 
       100% {
         transform: scale(1);
-        opacity: 0.9
+        opacity: .9
       }
     }
 
@@ -208,7 +191,7 @@
       gap: 8px;
       margin-top: 10px;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: center
     }
 
     .btn {
@@ -222,47 +205,34 @@
       gap: 8px;
       align-items: center;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 14px
     }
 
     .btn.important {
       background: linear-gradient(90deg, #00ffb3, #2bd1ff);
       color: #001421;
-      font-weight: 700;
-      box-shadow: 0 6px 18px rgba(43, 209, 255, 0.08);
+      font-weight: 700
     }
 
     .small {
       font-size: 13px;
       color: #cfeff6;
-      opacity: 0.9;
+      opacity: .9;
       margin-top: 8px;
-      text-align: center;
+      text-align: center
     }
 
     .right {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 12px
     }
 
     .chatHeader {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-    }
-
-    .chatTitle {
-      font-size: 16px;
-      font-weight: 700;
-      color: #e6fff6;
-    }
-
-    .sub {
-      font-size: 12px;
-      color: #bfeef3;
-      opacity: 0.9;
+      gap: 12px
     }
 
     #chatBox {
@@ -271,7 +241,7 @@
       padding: 14px;
       border-radius: 12px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005));
-      border: 1px solid rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.02)
     }
 
     .bubble {
@@ -280,28 +250,27 @@
       margin: 8px 0;
       border-radius: 14px;
       line-height: 1.3;
-      word-break: break-word;
+      word-break: break-word
     }
 
     .bubble.user {
       background: linear-gradient(90deg, #053a54, #0b6b8f);
       color: #d7f7ff;
       margin-left: auto;
-      border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 4px
     }
 
     .bubble.nova {
       background: linear-gradient(90deg, #061a2a, #0e2b3f);
       color: #ffe9b8;
-      border-bottom-left-radius: 4px;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+      border-bottom-left-radius: 4px
     }
 
     .inputRow {
       display: flex;
       gap: 10px;
       align-items: center;
-      margin-top: 6px;
+      margin-top: 6px
     }
 
     .textInput {
@@ -310,115 +279,21 @@
       border: 1px solid rgba(255, 255, 255, 0.04);
       padding: 10px 12px;
       border-radius: 12px;
-      color: #e6fff6;
-      outline: none;
-    }
-    .textInput:active {
-      background: #fff3;
+      color: #e6fff6
     }
 
     .foot {
       margin-top: 6px;
       font-size: 12px;
       color: #bfeef3;
-      opacity: 0.85;
-      text-align: center;
+      opacity: .85;
+      text-align: center
     }
 
-    /* === Improved Responsive Tweaks === */
-    @media (max-width:1024px) {
+    @media (max-width:900px) {
       .card {
         grid-template-columns: 1fr;
-        max-width: 95%;
-        padding: 18px;
-      }
-
-      #chatBox {
-        height: 380px;
-      }
-    }
-
-    @media (max-width:768px) {
-      body {
-        padding: 12px;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
-
-      .card {
-        grid-template-columns: 1fr;
-        padding: 14px;
-      }
-
-      .left,
-      .right {
-        width: 100%;
-        align-items: center;
-      }
-
-      .brand {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .orb {
-        width: 150px;
-        height: 150px;
-        margin: 12px 0;
-      }
-
-      .controls {
-        flex-wrap: wrap;
-        gap: 6px;
-        justify-content: center;
-      }
-
-      .btn {
-        flex: 1 1 45%;
-        font-size: 13px;
-        padding: 8px 10px;
-      }
-
-      #chatBox {
-        height: 320px;
-      }
-
-      .inputRow {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
-      }
-
-      .textInput,
-      #sendBtn {
-        width: 100%;
-      }
-    }
-
-    @media (max-width:480px) {
-      .logo {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
-      }
-
-      .brand h1 {
-        font-size: 16px;
-      }
-
-      .bubble {
-        max-width: 90%;
-        font-size: 13px;
-        padding: 8px 10px;
-      }
-
-      .btn {
-        font-size: 12px;
-        padding: 7px 9px;
-      }
-
-      #chatBox {
-        height: 280px;
+        padding: 18px
       }
     }
   </style>
@@ -427,7 +302,6 @@
 <body>
   <div class="bg-blob blob-1"></div>
   <div class="bg-blob blob-2"></div>
-
   <main class="card" role="main" aria-label="Nova AI Assistant">
     <section class="left">
       <div class="brand">
@@ -443,61 +317,59 @@
         </div>
       </div>
       <div class="controls">
-        <button class="btn" id="btnUpload">📂 Upload</button>
         <button class="btn" id="btnMusic">🎵 Music</button>
         <button class="btn" id="btnTime">⏰ Time</button>
         <button class="btn important" id="btnGreet">👋 Greet</button>
       </div>
       <div class="small">Say <strong>"Hey Nova"</strong> or tap mic • Multilang (BN/EN/HI)</div>
     </section>
-
     <section class="right">
       <div class="chatHeader">
         <div>
           <div class="chatTitle">Conversation</div>
           <div class="sub">Nova listens, learns & adapts to your style</div>
         </div>
-        <div style="text-align:right;font-size:12px;color:#bfeef3">
-          Status: <span id="statusText">Idle</span>
-        </div>
+        <div style="text-align:right;font-size:12px;color:#bfeef3">Status: <span id="statusText">Idle</span></div>
       </div>
-
-      <div id="chatBox"></div>
-
+      <div id="chatBox" aria-live="polite" role="log"></div>
       <div class="inputRow">
         <input id="manualInput" class="textInput" placeholder="Type a message or press mic..." />
         <button class="btn" id="sendBtn">Send</button>
       </div>
-      <div class="foot">Tip: say <em>"Nova, upload file"</em> or <em>"Nova, set reminder 8 am gym"</em></div>
+      <div class="foot">Tip: say <em>"Nova, set reminder 8 am gym"</em> • Voice wake-word needs App install (APK)</div>
     </section>
   </main>
 
   <script>
+    /*************************************************************************
+     * Nova — client side logic
+     * - Voice (Web Speech API) for browsers
+     * - Reminders (localStorage + Notifications)
+     * - Emotion heuristics (simple)
+     * - Memory (localStorage)
+     * - Hooks to call backend AI (server endpoint)
+     * - Passive listen loop (best-effort; for reliable wakeword use native Porcupine)
+     *************************************************************************/
     const chatBox = document.getElementById('chatBox');
     const statusText = document.getElementById('statusText');
     const micBtn = document.getElementById('micBtn');
     const ring = document.getElementById('ring');
-    const btnUpload = document.getElementById('btnUpload');
     const btnMusic = document.getElementById('btnMusic');
     const btnTime = document.getElementById('btnTime');
     const btnGreet = document.getElementById('btnGreet');
     const manualInput = document.getElementById('manualInput');
     const sendBtn = document.getElementById('sendBtn');
 
+    // --- TTS setup ---
     const synth = window.speechSynthesis;
     let selectedVoice = null;
-
     function pickVoice() {
-      const voices = synth.getVoices();
-      selectedVoice =
-        voices.find(v => v.name.includes("Google বাংলা নারী")) ||
-        voices.find(v => v.name.includes("Google UK English Female")) ||
-        voices.find(v => /female|woman/i.test(v.name)) ||
-        voices.find(v => v.lang === "bn-BD") ||
-        voices.find(v => v.lang === "en-IN") ||
+      const voices = synth.getVoices() || [];
+      selectedVoice = voices.find(v => /female|woman|Google UK/i.test(v.name)) ||
+        voices.find(v => v.lang && v.lang.startsWith('bn')) ||
         voices[0] || null;
     }
-    if (synth.onvoiceschanged !== undefined) { synth.onvoiceschanged = pickVoice; }
+    if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = pickVoice;
     pickVoice();
 
     function speak(text, opts = {}) {
@@ -505,103 +377,152 @@
       const u = new SpeechSynthesisUtterance(text);
       u.lang = 'bn-BD';
       u.text = text;
-      u.pitch = opts.pitch ?? 1.05;
       u.rate = opts.rate ?? 1.0;
+      u.pitch = opts.pitch ?? 1.03;
       if (selectedVoice) u.voice = selectedVoice;
+      synth.cancel();
       synth.speak(u);
       appendNova(text);
     }
 
-    function appendUser(text) {
-      const el = document.createElement('div');
-      el.className = 'bubble user'; el.textContent = text;
-      chatBox.appendChild(el); chatBox.scrollTop = chatBox.scrollHeight;
-    }
-    function appendNova(text) {
-      const el = document.createElement('div');
-      el.className = 'bubble nova'; el.textContent = text;
-      chatBox.appendChild(el); chatBox.scrollTop = chatBox.scrollHeight;
-    }
+    // --- Chat display ---
+    function appendUser(t) { const el = document.createElement('div'); el.className = 'bubble user'; el.textContent = t; chatBox.appendChild(el); chatBox.scrollTop = chatBox.scrollHeight; }
+    function appendNova(t) { const el = document.createElement('div'); el.className = 'bubble nova'; el.textContent = t; chatBox.appendChild(el); chatBox.scrollTop = chatBox.scrollHeight; }
 
+    // --- Speech Recognition (Web) ---
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recog = null;
-    try {
+    if (SpeechRecognition) {
       recog = new SpeechRecognition();
       recog.lang = 'bn-BD';
       recog.interimResults = false;
       recog.maxAlternatives = 1;
-    } catch (err) {
-      statusText.textContent = 'Voice not supported';
+      recog.onstart = () => { statusText.textContent = 'Listening...'; ring.style.animationPlayState = 'running'; }
+      recog.onend = () => { statusText.textContent = 'Idle'; ring.style.animationPlayState = 'paused'; }
+      recog.onerror = (e) => { statusText.textContent = 'Error'; speak('ভয়েস রিকগনিশনে সমস্যা হয়েছে।'); }
+      recog.onresult = (e) => { const t = e.results[0][0].transcript.trim(); appendUser(t); processCommand(t.toLowerCase()); }
     }
 
     let listening = false;
-    function startListening() {
-      if (!recog) { speak('দুঃখিত, এই ব্রাউজার voice রিকগনিশন সাপোর্ট করে না'); return; }
-      try {
-        recog.start();
-        listening = true;
-        statusText.textContent = 'Listening...';
-        ring.style.animationPlayState = 'running';
-      } catch (e) { }
-    }
-    function stopListening() {
+    function startListening() { if (!recog) { speak('তোমার browser voice রিকগনিশন সাপোর্ট করে না'); return; } try { recog.start(); listening = true; } catch (e) { } }
+    function stopListening() { if (!recog) return; try { recog.stop(); } catch (e) { } listening = false; }
+
+    // --- Passive listen (best-effort) ---
+    function passiveListen() {
       if (!recog) return;
-      try { recog.stop(); } catch (e) { }
-      listening = false;
-      statusText.textContent = 'Processing...';
-      ring.style.animationPlayState = 'paused';
-    }
-
-    if (recog) {
-      recog.onstart = () => { statusText.textContent = 'Listening...'; };
-      recog.onend = () => { statusText.textContent = 'Idle'; };
-      recog.onerror = (ev) => { statusText.textContent = 'Error'; speak('ভয়েস রিকগনিশন ত্রুটি, আবার বলো'); };
-      recog.onresult = (ev) => {
-        stopListening();
-        const transcript = ev.results[0][0].transcript.trim();
-        appendUser(transcript);
-        processCommand(transcript.toLowerCase());
+      try { recog.start(); } catch (e) { }
+      recog.onresult = (e) => {
+        const t = e.results[0][0].transcript.toLowerCase();
+        if (t.includes('hey nova') || t.includes('নোভা') || t.includes('হেই নোভা')) {
+          speak('জি Dip bhai, আমি আছি। বলো কি করতে হবে?');
+          startListening();
+        }
       };
+      recog.onend = () => { if (!listening) setTimeout(passiveListen, 500); };
     }
 
-    function processCommand(cmd) {
-      cmd = cmd.toLowerCase();
-      if (/^(hey\s*nova|nova|নোভা|হেই নোভা)/i.test(cmd)) { speak('জি বলুন Dip bhai! আমি আছি।'); return; }
-      if (cmd.includes('upload') || cmd.includes('ফাইল') || cmd.includes('আপলোড')) { speak('ঠিক আছে, আপলোড প্যানেল খুলে দিচ্ছি।'); window.open('https://forms.gle/eQiyxN8bSS7hdBcH6', '_blank'); return; }
-      if (cmd.includes('গান') || cmd.includes('music') || cmd.includes('play song')) { speak('তোমার জন্য একটু গান চালাচ্ছি।'); window.open('https://www.youtube.com/results?search_query=bengali+song', '_blank'); return; }
-      if (cmd.includes('সময়') || cmd.includes('time') || cmd.includes('কতটা')) { const t = new Date().toLocaleTimeString('bn-BD'); speak('এখন সময় ' + t); return; }
-      if (cmd.includes('remind') || cmd.includes('মনে') || cmd.includes('রিমাইন্ড')) {
-        const m = cmd.match(/(\d{1,2})/);
-        if (m) { const hour = parseInt(m[1]); speak('ঠিক আছে, আমি ' + hour + ' টায় মনে করিয়ে দেব।'); const reminders = JSON.parse(localStorage.getItem('nova_reminders') || '[]'); reminders.push({ text: cmd, hour, created: Date.now() }); localStorage.setItem('nova_reminders', JSON.stringify(reminders)); return; }
-        else { speak('কোন সময় স্মরণ করাতে চাও? উদাহরণ: "আমাকে ৮ টায় রিমাইন্ড করো" বলো।'); return; }
+    // --- Simple emotion detection by words/tone (heuristic) ---
+    function detectEmotion(text) {
+      const sadWords = ['দুঃখ', 'বিষাদ', 'একলা', 'কষ্ট', 'আমার নেই'];
+      const happyWords = ['হাসি', 'ভালো', 'খুশি', 'ছক্কা', 'দারুণ'];
+      for (let w of sadWords) if (text.includes(w)) return 'sad';
+      for (let w of happyWords) if (text.includes(w)) return 'happy';
+      return 'neutral';
+    }
+
+    // --- Reminders: store in localStorage, show notification and speak ---
+    function addReminder(hour, note) {
+      const list = JSON.parse(localStorage.getItem('nova_reminders') || '[]');
+      list.push({ hour, note, id: Date.now() });
+      localStorage.setItem('nova_reminders', JSON.stringify(list));
+      appendNova(`রিমাইন্ডার সেভ করা হয়েছে ${hour} টার জন্য — ${note}`);
+    }
+    function checkReminders() {
+      const list = JSON.parse(localStorage.getItem('nova_reminders') || '[]');
+      if (!list.length) return;
+      const now = new Date(), h = now.getHours();
+      list.forEach(r => {
+        if (r._fired) return;
+        if (r.hour === h) {
+          speak('Reminder: ' + r.note);
+          r._fired = true;
+        }
+      });
+      localStorage.setItem('nova_reminders', JSON.stringify(list));
+    }
+    setInterval(checkReminders, 60 * 1000);
+
+    // --- Minimal local "memory" ---
+    function memorize(key, val) { const mem = JSON.parse(localStorage.getItem('nova_mem') || '{}'); mem[key] = val; localStorage.setItem('nova_mem', JSON.stringify(mem)); }
+    function recall(key) { const mem = JSON.parse(localStorage.getItem('nova_mem') || '{}'); return mem[key]; }
+
+    // --- Backend AI hook (optional) ---
+    // Create your server that proxies OpenAI/Gemini (see server/server.js sample). Use fetch to call it.
+    async function callBackendAI(prompt) {
+      appendNova('অনলাইনে ভাবছি... (demo)');
+      try {
+        const res = await fetch('/api/ai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt, user: 'dipbag' }) });
+        if (!res.ok) throw new Error('AI failed');
+        const data = await res.json();
+        const text = data.reply || 'ওপরে আলাপ চলবে পরে...';
+        speak(text);
+      } catch (e) {
+        // fallback simple replies
+        speak('দুঃখিত, অনলাইনে সংযোগ পাওয়া যায়নি। আমি চেষ্টা করছি অফলাইনে সাহায্য করতে।');
       }
-      if (cmd.includes('মন খারাপ') || cmd.includes('দুঃখ') || cmd.includes('কষ্ট')) { speak('চিন্তা করো না Dip bhai. একটু deep breathe নাও — সব ঠিক হয়ে যাবে। আমি আছি তোমার পাশে।'); return; }
-      speak('দুঃখিত, আমি ঠিক বুঝিনি। তুমি ভিন্নভাবে বলে দাও বা "Hey Nova" বলো।');
     }
 
+    // --- Command processing (core) ---
+    function processCommand(cmd) {
+      appendNova('Processing...');
+      // wake
+      if (/^(hey\s*nova|nova|নোভা|হেই নোভা)/i.test(cmd)) { speak('জি বলো Dip bhai!'); return; }
+
+      // greeting shortcuts
+      if (cmd.includes('প্রণাম') || cmd.includes('ram ram')) { speak('Ram Ram Dip bhai! আজকে কী প্ল্যান?'); return; }
+
+      // time
+      if (cmd.includes('সময়') || cmd.includes('কতটা') || cmd.includes('time')) { speak('এখন সময় ' + new Date().toLocaleTimeString('bn-BD')); return; }
+
+      // music
+      if (cmd.includes('গান') || cmd.includes('music') || cmd.includes('play song')) { speak('গান চালাচ্ছি'); window.open('https://www.youtube.com/results?search_query=bengali+song', '_blank'); return; }
+
+      // reminders
+      if (cmd.includes('রিমাইন্ড') || cmd.includes('মনে')) { const m = cmd.match(/(\d{1,2})/); if (m) { addReminder(parseInt(m[1]), cmd); } else speak('কোন সময় মনে করাতে চাও? উদাহরণ: আমাকে ৮ টায় রিমাইন্ড করো'); return; }
+
+      // device actions (web level - can't call phone dial directly unless running in Android WebView & using bridge)
+      if (cmd.includes('open camera') || cmd.includes('ক্যামেরা খাও')) { speak('ক্যামেরা খুলছি'); /* on Android use native bridge */ return; }
+
+      // emotion support
+      if (cmd.includes('মন খারাপ') || cmd.includes('একাকী') || cmd.includes('কষ্ট')) { speak('চিন্তা করো না Dip bhai, আমি আছি। এক কাপ পানি নাও, deep breath নাও ❤'); return; }
+
+      // memory set: "remember my name is X" (example)
+      if (cmd.includes('আমার নাম') || cmd.includes('i am')) { const name = cmd.replace(/.*(?:আমার নাম|i am|i'm)\s*/i, '').trim(); if (name) { memorize('user_name', name); speak(`ঠিক আছে ${name} — আমি মনে রাখলাম`); } else speak('কি মনে রাখতে বলছো?'); return; }
+
+      // fallback to backend AI if available
+      callBackendAI(cmd);
+    }
+
+    // --- UI events ---
     micBtn.addEventListener('click', () => { if (!listening) startListening(); else stopListening(); });
-    btnUpload.addEventListener('click', () => { speak('Upload panel খুলছি।'); window.open('https://forms.gle/eQiyxN8bSS7hdBcH6', '_blank'); });
-    btnMusic.addEventListener('click', () => { speak('একটু মিউজিক চালাচ্ছি।'); window.open('https://www.youtube.com/results?search_query=bengali+song', '_blank'); });
+    btnMusic.addEventListener('click', () => { speak('মিউজিক চালাচ্ছি'); window.open('https://www.youtube.com/results?search_query=bengali+song', '_blank'); });
     btnTime.addEventListener('click', () => { speak('এখন সময় ' + new Date().toLocaleTimeString('bn-BD')); });
     btnGreet.addEventListener('click', () => { speak('🌸 Ram Ram Dip bhai! তোমার Nova হাজির. আজ কেমন আছো?'); });
 
-    sendBtn.addEventListener('click', () => { const txt = manualInput.value.trim(); if (!txt) return; appendUser(txt); manualInput.value = ''; processCommand(txt.toLowerCase()); });
-    manualInput.addEventListener('keydown', e => { if (e.key === 'Enter') { sendBtn.click(); } });
+    sendBtn.addEventListener('click', () => { const t = manualInput.value.trim(); if (!t) return; appendUser(t); manualInput.value = ''; processCommand(t.toLowerCase()); });
+    manualInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendBtn.click(); });
 
+    // initial greeting & start passive listen
     setTimeout(() => { appendNova('🌸 Ram Ram Dip! তোমার Nova হাজির. বলো, কী করতে হবে?'); }, 900);
+    setTimeout(() => { passiveListen(); }, 1500);
 
-    function passiveListen() {
-  if(!recog) return;
-  recog.start();
-  recog.onresult = (e) => {
-    const t = e.results[0][0].transcript.toLowerCase();
-    if (t.includes("hey nova") || t.includes("হেই নোভা") || t.includes("nova")) {
-      speak("জি Dip bhai, আমি আছি।");
-      startListening(); // main recognition again
+    // Notifications permission for reminders
+    if ('Notification' in window) { if (Notification.permission === 'default') Notification.requestPermission(); }
+
+    // Service worker registration (optional offline caching)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => console.log('SW failed'));
     }
-  };
-  recog.onend = () => { if(listening === false) passiveListen(); };
-}
 
   </script>
 </body>

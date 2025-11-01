@@ -1,15 +1,18 @@
+
 {
-  "name": "Hey Nova — Dip Edition",
-  "short_name": "Nova",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#041126",
-  "theme_color": "#00ffb3",
-  "icons": [
-    {
-      "src": "icon512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+  "appId": "com.dipnova.assistent",
+  "appName": "Hey Nova - Dip Edition",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "ui-design",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "launchAutoHide": true,
+      "backgroundColor": "#041126"
     }
-  ]
+  },
+  "server": {
+    "androidScheme": "https"
+  }
 }
